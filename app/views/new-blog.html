@@ -1,0 +1,6 @@
+<loading-spinner type="absolute" ng-if="newBlog.loading"></loading-spinner>
+<h3>New Blog Entry</h3>
+<div class="text-wrapper new-blog-entry">
+  <div text-angular class="custom-blog" ng-model="newBlog.html"></div>
+  <button ng-click="newBlog.submitBlog()" type="button" class="btn btn-danger submit-blog">Post Html Blog</button>
+</div>

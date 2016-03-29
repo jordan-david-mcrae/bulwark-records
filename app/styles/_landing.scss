@@ -1,0 +1,100 @@
+.landing-container {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.logo-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.landing-logo {
+  position: relative;
+  width: 56%;
+  /*height: 200px;*/
+  /*border: 2px solid white;*/
+  margin: 0 auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+.landing-logo img {
+  margin-top: 50px;
+  display: inline-block;
+  width: 100%;
+}
+
+.landing-logo:hover {
+  img:first-child {
+    display: none;
+    background: inherit;
+  }
+  img:nth-child(2) {
+    background: inherit;
+    display: inline-block;
+  }
+  .landing-enter button {
+    color: white;
+    /*background-color: #C9302C;*/
+  }
+}
+
+.landing-logo img:nth-child(2) {
+  display: none;
+}
+
+.landing-enter {
+  text-align: center;
+}
+
+.landing-enter button {
+  margin-top: 30px;
+  width: 75%;
+  height: 40px;
+  color: #121214;
+  margin-bottom: 10px;
+}
+
+.mobile-landing-logo {
+  position: relative;
+  width: 56%;
+  /*height: 200px;*/
+  /*border: 2px solid white;*/
+  margin: 0 auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+.mobile-landing-logo img {
+  display: inline-block;
+  width: 100%;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .mobile-landing-logo img {
+    max-width: 50%;
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
+  .landing-wrapper {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .landing-enter button {
+    margin-top: 20px;
+    height: 30px;
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .landing-logo {
+    margin-top: 0;
+  }
+  .landing-logo img {
+    width: 40%;
+  }
+}

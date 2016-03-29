@@ -1,0 +1,99 @@
+<div ng-show="bulwark.path !== '/' && bulwark.screensize!=='mobile'" id="bul-title" class="bulwark-title">
+  <img src="/images/logo-header-texture.png">
+</div>
+<nav class="navbar navbar-inverse" ng-if="bulwark.path !== '/'" sticky disabled-sticky="bulwark.screensize==='mobile'" body-class="is-sticky">
+  <div class="container-fluid" sticky disabled-sticky="bulwark.screensize==='mobile'">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/main">BULWARK RECORDS</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li ng-class="{active: bulwark.path === '/main'}" class="hidden-xs"><a href="/main">Home</a></li>
+        <li ng-class="{active: bulwark.path === '/main'}" class="visible-xs"><a href="/main" data-toggle="collapse" data-target=".navbar-collapse">Home</a></li>
+        <li ng-class="{active: bulwark.path === '/media'}">
+          <a href="/media" class="hidden-xs">Media</a>
+          <a href="/media" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Media</a>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="/label" class="hidden-xs">Label</a>
+              <a href="/label" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Label</a>
+            </li>
+            <li>
+              <a href="/artists" class="hidden-xs">Artists</a>
+              <a href="/artists" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Artists</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="/prospective-contact" class="hidden-xs">Prospective Artists</a>
+              <a href="/prospective-contact" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Prospective Artists</a>
+            </li>
+            <li>
+              <a href="/general-contact" class="hidden-xs">General Inquiries</a>
+              <a href="/general-contact" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">General Inquiries</a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li class="social-media-links col-sm-12">
+              <div class="social-media-links">
+                <div class="sm-link">
+                  <a href="https://facebook.com" target="_blank"><img src="/images/icons/facebook.png"></a>
+                </div>
+                <div class="sm-link">
+                  <a href="https://instagram.com" target="_blank"><img src="/images/icons/instagram.png"></div>
+                <div class="sm-link">
+                  <a href="https://twitter.com" target="_blank"><img src="/images/icons/twitter.png"></a>
+                </div>
+                <div class="sm-link">
+                  <a href="https://youtube.com" target="_blank"><img src="/images/icons/youtube.png"></a>
+                </div>
+                <div class="sm-link">
+                  <a href="https://linkedin.com" target="_blank"><img src="/images/icons/linkedin.png"></a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" ng-if="bulwark.auth">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="/new-blog/" class="hidden-xs">New Blog Post</a>
+              <a href="/new-blog/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">New Blog Post</a>
+            </li>
+            <li>
+              <a href="/main/" class="hidden-xs">Delete Blog Posts</a>
+              <a href="/main/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Delete Blog Posts</a>
+            </li>
+            <li>
+              <a href="/image-manager/" class="hidden-xs">Image Manager</a>
+              <a href="/image-manager/" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Image Manager</a>
+            </li>
+            <li>
+              <a ng-click="bulwark.logout()" class="hidden-xs">Logout</a>
+              <a ng-click="bulwark.logout()" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Logout</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="navigation-padding" ng-if="bulwark.path !== '/' && bulwark.screensize === 'mobile'"></div>

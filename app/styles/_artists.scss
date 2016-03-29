@@ -1,0 +1,30 @@
+.artists-container {
+  position: relative;
+}
+
+.artist-card .thumbnail {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.artist-card p a {
+  width: 100%;
+}
+
+.artist-card .caption {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.artist-info {
+  position: relative;
+}
+
+.artist-image {
+  position: relative;
+}
+
+.artist-image img {
+  max-width: 100%;
+  float: left;
+}

@@ -1,0 +1,20 @@
+<div class="header-wrapper">
+  <h2 spark-scroll-animate="bulwark.animateText">Main Header</h2>
+</div>
+<div class="text-wrapper">
+  <loading-spinner type="inline" ng-if="main.loading"></loading-spinner>
+  <div ng-repeat="blog in main.blogs.slice(((main.currentPage-1)*main.itemsPerPage), ((main.currentPage)*main.itemsPerPage))" class="col-xs-12 col-sm-12 text-container" spark-scroll-animate="bulwark.animateText" ng-hide="main.loading">
+    <button ng-click="main.deleteBlog(blog)" class="btn btn-danger pull-right" spark-scroll-animate="bulwark.animateText" ng-if="bulwark.auth">X</button>
+    <any ng-bind-html="blog.entry"></any>
+    <!-- <h3 spark-scroll-animate="bulwark.animateText" class="blog-title">{{blog.title}}</h3>
+    <p spark-scroll-animate="bulwark.animateText" class="blog-body">{{blog.body}}</p> -->
+    <div class="blog-divider"></div>
+  </div>
+  <div class="no-blogs" ng-if="main.blogs.length === 0 && !main.loading">
+    <p class="text-center">There are currently no blogs. Come back later for more content.</p>
+  </div>
+  <div class="pagination-wrapper" ng-show="main.blogs.length > main.itemsPerPage">
+    <uib-pagination boundary-links="true" direction-links="true" rotate="false" total-items="main.blogs.length" ng-model="main.currentPage" items-per-page="main.itemsPerPage" class="pagination-sm" ng-change="main.pageChanged(main.currentPage)">
+    </uib-pagination>
+  </div>
+</div>

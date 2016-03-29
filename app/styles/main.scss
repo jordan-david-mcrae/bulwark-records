@@ -1,0 +1,197 @@
+/*FONT AWESOME*/
+
+$fa-font-path: "/bower_components/font-awesome/fonts";
+@import "font-awesome/scss/font-awesome";
+
+/**/
+
+@import "variables.scss";
+@import "landing.scss";
+@import "fonts.scss";
+@import "navigation.scss";
+@import "form-elements.scss";
+@import "buttons.scss";
+@import "blogs.scss";
+@import "animations.scss";
+@import "general-contact.scss";
+@import "footer.scss";
+@import "media.scss";
+@import "artists.scss";
+@import "icon-fonts.scss";
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body,
+html {
+  background-image: url('/images/concrete-seamless.png');
+}
+
+.btn-danger {
+  background-color: $primary-color;
+  border: none;
+}
+
+
+/*p,
+h1,
+h2,
+h3,
+h4,
+h5,
+span {
+  font-family: 'Lateef', helvetica;
+}*/
+
+
+/*p {
+  font-size: 20px;
+  font-weight: bold;
+}
+*/
+
+body {
+  padding: 0;
+  background-color: #121214;
+}
+
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+
+.main-container {
+  padding-left: 12%;
+  padding-right: 12%;
+}
+
+.navbar {
+  border: none;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+  background-image: url(#121214);
+}
+
+.navbar-nav > li > .dropdown-menu {
+  background-color: #222;
+  color: #FFF;
+}
+
+.navbar-nav > li > .dropdown-menu a {
+  color: #9d9d9d;
+}
+
+.navbar-nav > li > .dropdown-menu a:hover {
+  background-color: #222;
+  color: #FFF;
+}
+
+.header-wrapper h2 {
+  margin-bottom: 0;
+}
+
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
+/* Custom page header */
+
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+}
+
+
+/* Make the masthead heading the same height as the navigation */
+
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+
+/* Custom page footer */
+
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+
+/* Main marketing message and sign up button */
+
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+
+/* Supporting marketing content */
+
+.marketing {
+  margin: 40px 0;
+}
+
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+
+/* Responsive: Portrait tablets and up */
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+
+/*Mobile*/
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .main-container {
+    padding: 0;
+  }
+}
+
+
+/*iPad*/
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .main-container {
+    padding: 0;
+  }
+}

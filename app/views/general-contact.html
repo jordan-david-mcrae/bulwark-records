@@ -1,0 +1,17 @@
+<div class="col-sm-12">
+  <h1 spark-scroll-animate="bulwark.animateText">Who's Your Daddy?</h1>
+  <h3 spark-scroll-animate="bulwark.animateText">Message Me to Find Out ;)</h3>
+  <div class="general-contact">
+    <div class="form-group">
+      <h5><label for="gen-name">Name</label></h5>
+      <input id="gen-name" type="text" class="form-control" ng-model="generalContact.query.name">
+      <h5><label for="gen-phone">Phone</label></h5>
+      <input id="gen-phone" type="number" class="form-control" ng-model="generalContact.query.phone">
+      <h5><label for="gen-email">Email</label></h5>
+      <input id="gen-email" type="email" class="form-control" ng-model="generalContact.query.email">
+      <h5><label for="gen-body">Message</label></h5>
+      <textarea id="gen-body" type="text" ng-model="generalContact.query.message" class="form-control"></textarea>
+    </div>
+    <button ng-click="generalContact.submit()" type="button" class="btn btn-danger">SUBMIT</button>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+{
+  "name": "bulwark-records-server",
+  "version": "0.0.1",
+  "description": "Bulwark Records Server",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^1.13.1",
+    "cors": "^2.7.1",
+    "express": "^4.12.4",
+    "jsonfile": "^2.2.3",
+    "multer": "^1.1.0",
+    "request": "^2.58.0",
+    "socket.io": "^1.4.5"
+  }
+}

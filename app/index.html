@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Bulwark Records 2016</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+  <meta name="fragment" content="!">
+  <base href="/">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css' />
+  <link rel='stylesheet' href='bower_components/textAngular/dist/textAngular.css' />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+  <link href='https://fonts.googleapis.com/css?family=Lateef' rel='stylesheet' type='text/css'>
+</head>
+
+<body ng-app="bulwarkApp" ng-controller="BulwarkCtrl as bulwark">
+  <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+  <navigation-bar></navigation-bar>
+  <div class="container-fluid main-container">
+    <div ng-view="" ng-cloak></div>
+    <mobile-scroll-button></mobile-scroll-button>
+  </div>
+  <footer></footer>
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+  <script>
+  ! function(A, n, g, u, l, a, r) {
+    A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+        (A[l].q = A[l].q || []).push(arguments)
+      }, A[l].l = +new Date, a = n.createElement(g),
+      r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+  }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-XXXXX-X');
+  ga('send', 'pageview');
+  </script>
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+  <script src="bower_components/shifty/dist/shifty.min.js"></script>
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="bower_components/rekapi/dist/rekapi.min.js"></script>
+  <script src="bower_components/spark-scroll/src/spark-scroll.js"></script>
+  <script src="bower_components/matchmedia/matchMedia.js"></script>
+  <script src="bower_components/ngSticky/lib/sticky.js"></script>
+  <script src="bower_components/angular-socket-io/socket.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/rangy/rangy-core.js"></script>
+  <script src="bower_components/rangy/rangy-classapplier.js"></script>
+  <script src="bower_components/rangy/rangy-highlighter.js"></script>
+  <script src="bower_components/rangy/rangy-selectionsaverestore.js"></script>
+  <script src="bower_components/rangy/rangy-serializer.js"></script>
+  <script src="bower_components/rangy/rangy-textrange.js"></script>
+  <script src="bower_components/textAngular/dist/textAngular.js"></script>
+  <script src="bower_components/textAngular/dist/textAngular-sanitize.js"></script>
+  <script src="bower_components/textAngular/dist/textAngularSetup.js"></script>
+  <script src="bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/main.js"></script>
+  <script src="scripts/controllers/about.js"></script>
+  <script src="scripts/controllers/landing.js"></script>
+  <script src="scripts/directives/navigation-bar.js"></script>
+  <script src="scripts/directives/mobile-scroll-button.js"></script>
+  <script src="scripts/controllers/label.js"></script>
+  <script src="scripts/controllers/artists.js"></script>
+  <script src="scripts/controllers/prospective-contact.js"></script>
+  <script src="scripts/controllers/general-contact.js"></script>
+  <script src="scripts/controllers/new-blog.js"></script>
+  <script src="scripts/services/blogservice.js"></script>
+  <script src="scripts/services/screensize.js"></script>
+  <script src="scripts/controllers/adminlogin.js"></script>
+  <script src="scripts/services/user.js"></script>
+  <script src="scripts/controllers/bulwark.js"></script>
+  <script src="scripts/directives/footer.js"></script>
+  <script src="scripts/controllers/media.js"></script>
+  <script src="scripts/directives/loading-spinner.js"></script>
+  <script src="scripts/directives/logo-animation.js"></script>
+  <script src="scripts/controllers/artist.js"></script>
+  <script src="scripts/services/artist-service.js"></script>
+  <script src="scripts/controllers/image-manager.js"></script>
+  <script src="scripts/directives/ng-thumb.js"></script>
+  <script src="scripts/controllers/general-admin.js"></script>
+  <!-- endbuild -->
+  <script src="/bower_components/socket.io-client/socket.io.js"></script>
+  <!-- <script src="http://192.168.0.17:9000/bower_components/socket.io-client/socket.io.js"></script> -->
+  <script src="bower_components/spark-scroll/demo/vendor/AnimationFrame.js"></script>
+</body>
+
+</html>
