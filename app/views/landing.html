@@ -1,18 +1,26 @@
-<div class="col-xs-12 landing-wrapper" ng-click="landing.location.path('/main')">
+<div class="col-xs-12 landing-wrapper">
+<!-- <div class="col-xs-12 landing-wrapper" ng-click="landing.location.path('/main')"> -->
   <!--   <div class="landing-logo" ng-show="!landing.hover" ng-click="landing.location.path('/main')">
     <img ng-src="/images/logo-standard.png">
   </div> -->
-  <div class="landing-logo" ng-touch="landing.location.path('/main')" ng-click="landing.location.path('/main')" ng-if="landing.screensize==='desktop'">
+  <!-- <div class="landing-logo" ng-touch="landing.location.path('/main')" ng-click="landing.location.path('/main')" ng-if="landing.screensize==='desktop'"> -->
+  <div class="landing-logo" ng-if="landing.screensize==='desktop'">
     <img ng-src="/images/logo-standard.png">
     <img ng-src="/images/logo-highlight.png">
-    <div class="col-xs-12 landing-enter" ng-click="landing.location.path('/main')">
-      <button class="btn btn-danger" ng-click="landing.location.path('/main')">ENTER</button>
+    <div class="col-xs-12 landing-enter">
+    <!-- <div class="col-xs-12 landing-enter" ng-click="landing.location.path('/main')"> -->
+      <!-- <button class="btn btn-danger" ng-click="landing.location.path('/main')">ENTER</button> -->
+      <button class="btn btn-danger">Coming Soon...</button>
+      <p>bulwarkrecords@gmail.com</p>
+      
     </div>
   </div>
-  <div class="mobile-landing-logo" ng-touch="landing.location.path('/main')" ng-click="landing.location.path('/main')" ng-if="landing.screensize==='mobile'">
+  <div class="mobile-landing-logo" ng-if="landing.screensize==='mobile'">
+  <!-- <div class="mobile-landing-logo" ng-touch="landing.location.path('/main')" ng-click="landing.location.path('/main')" ng-if="landing.screensize==='mobile'"> -->
     <img ng-src="/images/logo-standard.png">
-    <div class="col-xs-12 landing-enter" ng-click="landing.location.path('/main')">
-      <button class="btn btn-danger" ng-click="landing.location.path('/main')">ENTER</button>
+    <!-- <div class="col-xs-12 landing-enter" ng-click="landing.location.path('/main')"> -->
+      <button class="btn btn-danger">Coming Soon...</button>
+      <p>bulwarkrecords@gmail.com</p>
     </div>
   </div>
 </div>

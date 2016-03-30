@@ -30,10 +30,27 @@ module.exports = function(grunt) {
   // Define the configuration for all the tasks
   grunt.initConfig({
 
-    // Nodemon settings
-    nodemon: {
+    // Grunt Express set up
+    express: {
+      options: {
+        // Override defaults here
+        port: 5002
+      },
       dev: {
-        script: 'server.js'
+        options: {
+          script: './server/server.js'
+        }
+      },
+      prod: {
+        options: {
+          script: './server/server.js',
+          node_env: 'production'
+        }
+      },
+      test: {
+        options: {
+          script: './server/server.js'
+        }
       }
     },
 
@@ -471,8 +488,8 @@ module.exports = function(grunt) {
     }
   });
 
-   // load nodemon
-  grunt.loadNpmTasks('grunt-nodemon');
+  // Load Grunt Express Server
+  grunt.loadNpmTasks('grunt-express-server');
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function(target) {
     if (target === 'dist') {
@@ -518,7 +535,8 @@ module.exports = function(grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'express'
   ]);
 
   grunt.registerTask('default', [
@@ -526,6 +544,6 @@ module.exports = function(grunt) {
     'newer:jscs',
     'test',
     'build',
-    'nodemon'
+    'express'
   ]);
 };

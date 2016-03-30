@@ -103,6 +103,13 @@ angular
 
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
+  .run( function($rootScope, $location) {
+    // register listener to watch route changes
+    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+        // Temporary while site is under construction
+        $location.path('/');        
+      });         
+    })
   .config(function($httpProvider) {
     $httpProvider.defaults.headers.common.Accept = 'application/json';
     $httpProvider.defaults.headers.common['Content-Type'] = 'application/json';
