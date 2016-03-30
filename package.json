@@ -46,6 +46,7 @@
     "connect-modrewrite": "^0.8.5",
     "moment": "^2.12.0",
     "nodemon": "^1.9.1",
+    "grunt-contrib-compass": "^1.1.1",
     "photon": "^2.0.0"
   }
 }
