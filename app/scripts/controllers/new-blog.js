@@ -17,12 +17,14 @@ angular.module('bulwarkApp')
       vm.loading = true;
       blogService.sendBlog(vm.html)
         .then(function success(reponse) {
+          console.log('RESPONSE: ', reponse);
           // Add in toast message
           vm.html = '';
           vm.loading = false;
 
         }, function error(err) {
           vm.loading = false;
+          console.log('ERROR: ', err);
         });
-    }
+    };
   });

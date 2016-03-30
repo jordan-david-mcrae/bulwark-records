@@ -16,7 +16,7 @@ angular.module('bulwarkApp')
         var vm = this;
         vm.path = $location.path();
       },
-      link: function(scope, element, attrs) {
+      link: function(scope) {
 
         var bodyheight = '';
         var windowheight = '';
@@ -45,7 +45,7 @@ angular.module('bulwarkApp')
         }
 
         scope.$watch(function() {
-          return angular.element('html')[0].offsetHeight
+          return angular.element('html')[0].offsetHeight;
         }, function(newV) {
           bodyheight = newV;
           if (angular.element('.footer-bar')[0] !== undefined) {

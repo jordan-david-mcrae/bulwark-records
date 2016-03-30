@@ -15,9 +15,9 @@ angular.module('bulwarkApp')
       phone: '',
       email: '',
       message: ''
-    }
+    };
 
     vm.submit = function() {
       console.log('SENDING... ', vm.query);
-    }
+    };
   });

@@ -52,7 +52,7 @@ angular.module('bulwarkApp')
     vm.pageChanged = function() {
       $window.scrollTo(0, 0);
 
-      var changePage = (vm.currentPage * vm.itemsPerPage) - vm.itemsPerPage;
+      // var changePage = (vm.currentPage * vm.itemsPerPage) - vm.itemsPerPage;
 
       var changePage = (vm.currentPage * $scope.pageSize) - $scope.pageSize;
       vm.beginFrom = changePage;

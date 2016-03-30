@@ -14,7 +14,7 @@ angular.module('bulwarkApp')
       scope: {
         type: '@'
       },
-      link: function(scope, element, attrs) {
+      link: function(scope) {
         var wrapper = angular.element('.loading-wrapper');
         var spinner = angular.element('.loading-spinner');
         if (scope.type === 'inline') {

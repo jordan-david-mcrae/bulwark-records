@@ -26,14 +26,14 @@ angular.module('bulwarkApp')
         // }
 
         scope.$watch(function() {
-          return $location.path()
+          return $location.path();
         }, function() {
           if ($location.path() !== '/main') {
             element[0].style.display = 'none';
           } else {
             element[0].style.display = 'initial';
           }
-        }, true)
+        }, true);
 
       }
     };

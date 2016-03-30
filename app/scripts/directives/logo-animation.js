@@ -10,14 +10,14 @@ angular.module('bulwarkApp')
   .directive('logoAnimation', function($timeout, $location) {
     return {
       restrict: 'A',
-      link: function(scope, element, attrs) {
+      link: function(scope, element) {
         console.log('HELLO WORLD');
-        var wrapper = angular.element('.landing-wrapper')[0];
+        // var wrapper = angular.element('.landing-wrapper')[0];
         element.bind('click', function() {
           element.addClass('magictime puffOut');
           $timeout(function() {
             $location.path('/main');
-          }, 500)
+          }, 500);
         });
       }
     };

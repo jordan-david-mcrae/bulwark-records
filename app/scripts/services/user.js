@@ -22,7 +22,7 @@ angular.module('bulwarkApp')
       },
       login: function(user) {
         var deferred = $q.defer();
-        $http.post('http://localhost:5002/login/', user)
+        $http.post('http://159.203.25.157:5002/login/', user)
           .then(function success(response) {
             deferred.resolve(response.data);
             userId = response.data.success.userID;
@@ -33,7 +33,7 @@ angular.module('bulwarkApp')
       },
       logout: function() {
         var deferred = $q.defer();
-        $http.post('http://localhost:5002/logout/', '')
+        $http.post('http://159.203.25.157:5002/logout/', '')
           .then(function success(response) {
             userId = '';
             deferred.resolve(response.data);

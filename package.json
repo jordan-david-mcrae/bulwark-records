@@ -7,6 +7,7 @@
     "grunt-angular-templates": "^0.5.7",
     "grunt-concurrent": "^1.0.0",
     "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-compass": "^1.1.1",
     "grunt-contrib-concat": "^0.5.0",
     "grunt-contrib-connect": "^0.9.0",
     "grunt-contrib-copy": "^0.7.0",
@@ -22,14 +23,15 @@
     "grunt-karma": "*",
     "grunt-newer": "^1.1.0",
     "grunt-ng-annotate": "^0.9.2",
+    "grunt-nodemon": "^0.4.1",
     "grunt-postcss": "^0.5.5",
     "grunt-svgmin": "^2.0.0",
     "grunt-usemin": "^3.0.0",
     "grunt-wiredep": "^2.0.0",
+    "jasmine-core": "*",
     "jit-grunt": "^0.9.1",
     "jshint-stylish": "^1.0.0",
     "karma": "^0.13.19",
-    "jasmine-core": "*",
     "karma-jasmine": "*",
     "karma-phantomjs-launcher": "*",
     "phantomjs-prebuilt": "^2.1.4",
@@ -40,9 +42,10 @@
   },
   "dependencies": {
     "angular-loading-bar": "^0.8.0",
-    "angular-ui-bootstrap": "^1.2.1",
+    "angular-ui-bootstrap": "^1.2.5",
     "connect-modrewrite": "^0.8.5",
-    "moment": "^2.11.2",
+    "moment": "^2.12.0",
+    "nodemon": "^1.9.1",
     "photon": "^2.0.0"
   }
 }

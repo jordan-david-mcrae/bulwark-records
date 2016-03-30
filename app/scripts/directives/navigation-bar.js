@@ -7,7 +7,7 @@
  * # navigation
  */
 angular.module('bulwarkApp')
-  .directive('navigationBar', function($timeout, $document, $parse, $window, $rootScope) {
+  .directive('navigationBar', function($timeout, $document, $parse, $window) {
     return {
       templateUrl: 'views/directives/navigation.html',
       restrict: 'E',
@@ -26,21 +26,21 @@ angular.module('bulwarkApp')
           }
         }, 20);
       },
-      link: function(scope, element, attrs) {
+      link: function(scope) {
         var height = '';
-        var title = angular.element('#bul-title')[0];
-        var maincontainer = angular.element('.main-container')[0];
+        // var title = angular.element('#bul-title')[0];
+        // var maincontainer = angular.element('.main-container')[0];
         var body = angular.element('body');
-        var isLoaded = false;
+        // var isLoaded = false;
         scope.isSticky = false;
 
         function init() {
           rebuild();
-        };
+        }
 
         function rebuild() {
           height = angular.element('#bul-title')[0].offsetHeight;
-        };
+        }
 
         $window.onscroll = _.debounce(function() {
           var classes = body.attr('class');

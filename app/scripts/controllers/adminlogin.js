@@ -22,7 +22,7 @@ angular.module('bulwarkApp')
     vm.login = function() {
       user.login(vm.username)
         .then(function success() {
-          $location.path('/main')
+          $location.path('/main');
         }, function error() {
           // Handle login error here
           console.log('ERROR');

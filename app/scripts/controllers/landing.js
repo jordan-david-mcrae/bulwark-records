@@ -8,7 +8,7 @@
  * Controller of the bulwarkApp
  */
 angular.module('bulwarkApp')
-  .controller('LandingCtrl', function($location, screensize, $timeout) {
+  .controller('LandingCtrl', function($location, screensize) {
     var vm = this;
     vm.location = $location;
     vm.screensize = screensize;

@@ -30,6 +30,13 @@ module.exports = function(grunt) {
   // Define the configuration for all the tasks
   grunt.initConfig({
 
+    // Nodemon settings
+    nodemon: {
+      dev: {
+        script: 'server.js'
+      }
+    },
+
     // Project settings
     yeoman: appConfig,
 
@@ -72,10 +79,10 @@ module.exports = function(grunt) {
     // The actual grunt server settings
     connect: {
       options: {
-        port: 9000,
+        port: 5000,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: '0.0.0.0',
-        livereload: 35729
+        livereload: 35731
       },
       livereload: {
         options: {
@@ -464,6 +471,8 @@ module.exports = function(grunt) {
     }
   });
 
+   // load nodemon
+  grunt.loadNpmTasks('grunt-nodemon');
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function(target) {
     if (target === 'dist') {
@@ -516,6 +525,7 @@ module.exports = function(grunt) {
     'newer:jshint',
     'newer:jscs',
     'test',
-    'build'
+    'build',
+    'nodemon'
   ]);
 };

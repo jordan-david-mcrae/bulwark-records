@@ -23,7 +23,7 @@ angular.module('bulwarkApp')
         var deferred = $q.defer();
 
         $timeout(function() {
-          $http.get('http://localhost:5002/blogs/')
+          $http.get('http://159.203.25.157:5002/blogs/')
             .then(function success(response) {
               blogs = response.data;
               console.log('RESPONSE: ', response);
@@ -44,7 +44,7 @@ angular.module('bulwarkApp')
         if (user.isAuthenticated()) {
           var deferred = $q.defer();
           $timeout(function() {
-            $http.post('http://localhost:5002/new-html-entry/', jsonBlog)
+            $http.post('http://159.203.25.157:5002/new-html-entry/', jsonBlog)
               .then(function success(response) {
                 deferred.resolve(response);
               }, function error(err) {
@@ -60,7 +60,7 @@ angular.module('bulwarkApp')
         if (user.isAuthenticated()) {
           var deferred = $q.defer();
 
-          $http.post('http://localhost:5002/delete-blog/', blog)
+          $http.post('http://159.203.25.157:5002/delete-blog/', blog)
             .then(function success(response) {
               deferred.resolve(response);
               blogs = response.data;
