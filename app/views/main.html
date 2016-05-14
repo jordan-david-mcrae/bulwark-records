@@ -1,11 +1,30 @@
-<div class="header-wrapper">
-  <h2 spark-scroll-animate="bulwark.animateText">Main Header</h2>
+<div class="header-wrapper col-xs-12">
+  <h2>News</h2>
 </div>
 <div class="text-wrapper">
   <loading-spinner type="inline" ng-if="main.loading"></loading-spinner>
-  <div ng-repeat="blog in main.blogs.slice(((main.currentPage-1)*main.itemsPerPage), ((main.currentPage)*main.itemsPerPage))" class="col-xs-12 col-sm-12 text-container" spark-scroll-animate="bulwark.animateText" ng-hide="main.loading">
-    <button ng-click="main.deleteBlog(blog)" class="btn btn-danger pull-right" spark-scroll-animate="bulwark.animateText" ng-if="bulwark.auth">X</button>
-    <any ng-bind-html="blog.entry"></any>
+  <div ng-if="bulwark.auth">
+    <h3 class="contact-message" ng-class="main.hasError ? 'contact-error' : 'contact-success'">{{main.message}}</h3>
+  </div>
+  <div ng-repeat="blog in main.blogs.slice(((main.currentPage-1)*main.itemsPerPage), ((main.currentPage)*main.itemsPerPage))" class="col-xs-12 col-sm-12 text-container" ng-hide="main.loading">
+
+    <div class="admin-info" ng-if="bulwark.auth">
+      <loading-spinner type="absolute" ng-if="main.loading && main.editId === blog.blogID"></loading-spinner>
+    </div>
+
+    <div class="admin-buttons" ng-if="bulwark.auth">
+      <button ng-click="main.deleteBlog(blog)" class="btn btn-danger pull-right" ng-if="bulwark.auth" ng-hide="main.editId === blog.blogID && main.edit">X</button>
+      <button ng-click="main.editBlog(blog)" class="btn btn-primary pull-right" ng-if="bulwark.auth" ng-hide="main.editId === blog.blogID && main.edit">Edit</button>
+    </div>
+
+    <div class="edit-wrapper" ng-if="bulwark.auth">
+      <div text-angular class="custom-blog" ng-model="blog.html" ng-if="bulwark.auth && main.editId === blog.blogID && main.edit"></div>
+      <button ng-click="main.save(blog)" class="btn btn-danger" ng-if="bulwark.auth && main.editId === blog.blogID && main.edit">Save</button>
+    </div>
+
+    <div class="blog-post">
+      <any ng-bind-html="blog.html" ng-hide="main.editId === blog.blogID && main.edit"></any>
+    </div>
     <!-- <h3 spark-scroll-animate="bulwark.animateText" class="blog-title">{{blog.title}}</h3>
     <p spark-scroll-animate="bulwark.animateText" class="blog-body">{{blog.body}}</p> -->
     <div class="blog-divider"></div>
@@ -14,7 +33,7 @@
     <p class="text-center">There are currently no blogs. Come back later for more content.</p>
   </div>
   <div class="pagination-wrapper" ng-show="main.blogs.length > main.itemsPerPage">
-    <uib-pagination boundary-links="true" direction-links="true" rotate="false" total-items="main.blogs.length" ng-model="main.currentPage" items-per-page="main.itemsPerPage" class="pagination-sm" ng-change="main.pageChanged(main.currentPage)">
+    <uib-pagination boundary-links="true" direction-links="true" rotate="false" total-items="main.blogs.length" ng-model="main.currentPage" items-per-page="main.itemsPerPage" class="pagination-sm" ng-change="main.pageChanged(main.currentPage)" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
     </uib-pagination>
   </div>
 </div>

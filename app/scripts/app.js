@@ -22,7 +22,10 @@ angular
     'btford.socket-io',
     'ui.bootstrap',
     'textAngular',
-    'angularFileUpload'
+    'duScroll',
+    'ngFileUpload',
+    'angular-country-select',
+    'LocalStorageModule'
 
   ])
   .config(function($routeProvider, $locationProvider) {
@@ -97,21 +100,32 @@ angular
         controller: 'GeneralAdminCtrl',
         controllerAs: 'generalAdmin'
       })
+      .when('/manage-artists', {
+        templateUrl: 'views/manage-artists.html',
+        controller: 'ManageArtistsCtrl',
+        controllerAs: 'manageArtists'
+      })
       .otherwise({
         redirectTo: '/'
       });
 
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
-  .run( function($rootScope, $location) {
+  .run( function($rootScope) {
     // register listener to watch route changes
-    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-        // Temporary while site is under construction
-        $location.path('/');        
-      });         
-    })
+    $rootScope.$on( "$routeChangeStart", function() {
+      // Temporary while site is under construction
+      // $location.path('/');        
+    });         
+  })
+  .constant('ENV', {
+    DEV: 'http://192.168.0.11:5002',
+    PROD: 'http://10.26.32.176:5002'
+  })
   .config(function($httpProvider) {
     $httpProvider.defaults.headers.common.Accept = 'application/json';
     $httpProvider.defaults.headers.common['Content-Type'] = 'application/json';
     $httpProvider.defaults.withCredentials = false;
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
   });

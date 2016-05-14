@@ -9,3 +9,91 @@
 .general-contact {
   padding-top: 0;
 }
+
+.contact-loading {
+	.loading-wrapper {
+		position: fixed;
+		top: 40%;
+		left: 0;
+	}
+}
+
+.contact-error {
+	color: $primary-color;
+}
+
+.contact-success {
+	color: $success;
+}
+
+.invalid-field {
+	color: $primary-color;
+}
+
+.file-button {
+	margin-bottom: 10px;
+	button {
+		border-radius: 10px;
+	}
+}
+
+.file-list {
+	margin-top: 10px;
+}
+
+.file-upload-label {
+	margin-bottom: 0;
+	label {
+		margin-bottom: 0;
+	}
+}
+
+.window-fader {
+	position: fixed;
+	display: none;
+	z-index: 99999;
+	width: 100%;
+	height: 100%;
+	background-color: $black;
+	opacity: 0.6;
+}
+
+.show-fader {
+	display: block!important;
+}
+.fader-info {
+	z-index: 100000;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	display: none;
+	top: 50vh;
+	left: 50vw;
+	.faded-upload-icon {
+		font-size: 20vw;
+		position: fixed;
+		left: 40vw;
+		top: 20vh;
+		color: $primary-color;
+	}
+	.faded-upload-text {
+		font-size: 10vw;
+		position: fixed;
+		top: 50vh;
+		left: 15vw;
+		color: $white-text;		
+	}
+}
+
+
+/*
+.show-fader::before {
+	position: fixed;
+    width: 100%;
+    height: 100%;
+    content: ' ';
+    opacity: 0.4;
+}
+.show-fader {
+    background-color: white;
+}*/

@@ -14,7 +14,7 @@ angular.module('bulwarkApp')
       link: function postLink(scope, element) {
 
         element.on('click', function() {
-          $window.scrollTo(0, 0);
+          $('body').duScrollTo(0, 0, 500);
         });
 
         // $window.onscroll = function() {

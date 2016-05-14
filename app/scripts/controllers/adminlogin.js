@@ -10,8 +10,13 @@
 angular.module('bulwarkApp')
   .controller('AdminloginCtrl', function(user, $location) {
     var vm = this;
-    vm.username = {
-      login: '',
+    vm.credentials = {
+      username: '',
+      password: ''
+    };
+
+    vm.registration = {
+      username: '',
       password: ''
     };
 
@@ -20,12 +25,23 @@ angular.module('bulwarkApp')
     };
 
     vm.login = function() {
-      user.login(vm.username)
-        .then(function success() {
+      user.login(vm.credentials)
+        .then(function success(response) {
+          console.log('Success: ', response);
           $location.path('/main');
-        }, function error() {
+        }, function error(response) {
           // Handle login error here
-          console.log('ERROR');
+          console.log('Error', response);
+        });
+    };
+
+    vm.register = function() {
+      user.register(vm.registration)
+        .then(function success (response) {
+          console.log('Successful registration: ', response);
+          $location.path('/main');
+        }, function err (response) {
+          console.log('Error while signing up: ', response);
         });
     };
   });

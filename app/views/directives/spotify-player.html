@@ -1,0 +1,8 @@
+<nav id="menu">
+	<loading-spinner type="inline" ng-show="loading"></loading-spinner>
+	<iframe ng-show="!loading" src="https://embed.spotify.com/?uri=spotify%3Auser%3Aqlmhuge%3Aplaylist%3A6Df19VKaShrdWrAnHinwVO" height="350" width="250" frameborder="0" allowtransparency="true"></iframe>
+	<iframe ng-show="!loading" src="https://embed.spotify.com/follow/1/?uri=spotify:artist:1vCWHaC5f2uS3yhpwWbIA6&size=detail&theme=light" width="250" height="56" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowtransparency="true"></iframe>
+	<button class="spotify-closer" ng-click="toggleSideNav()"><span class="glyphicon glyphicon-chevron-right listen-icon" aria-hidden="true"></span></button>
+</nav>
+
+<button class="spotify-dragger" ng-click="toggleSideNav()" ng-if="!isActive" ng-hide="checkLocation()"><span class="glyphicon glyphicon-chevron-right listen-icon" aria-hidden="true"></span></button>

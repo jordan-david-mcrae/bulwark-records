@@ -1,17 +1,46 @@
+<loading-spinner type="absolute" ng-if="generalContact.updateTextLoading"></loading-spinner>
+
+<div>
+  <h3 class="contact-message" ng-class="generalContact.hasError ? 'contact-error' : 'contact-success'">{{generalContact.updateMessage}}</h3>
+</div>
+
+<div ng-if="bulwark.auth && !generalContact.editOn && !generalContact.updateTextLoading">
+  <button ng-click="generalContact.edit()" type="button" class="btn btn-danger submit-blog">Edit</button>
+</div>
+
 <div class="col-sm-12">
-  <h1 spark-scroll-animate="bulwark.animateText">Who's Your Daddy?</h1>
-  <h3 spark-scroll-animate="bulwark.animateText">Message Me to Find Out ;)</h3>
+  <div class="edit-info-wrapper" ng-if="bulwark.auth && generalContact.editOn && !generalContact.updateTextLoading">
+    <div text-angular class="custom-blog" ng-model="generalContact.info.html"></div>
+    <button ng-click="generalContact.save()" type="button" class="btn btn-danger submit-blog">Save</button>
+    <button ng-click="generalContact.cancel()" type="button" class="btn btn-danger submit-blog">Cancel</button>
+  </div>
+  <any ng-bind-html="generalContact.info.html" ng-hide="generalContact.editOn || generalContact.updateTextLoading"></any>
+  <hr>
   <div class="general-contact">
-    <div class="form-group">
-      <h5><label for="gen-name">Name</label></h5>
-      <input id="gen-name" type="text" class="form-control" ng-model="generalContact.query.name">
-      <h5><label for="gen-phone">Phone</label></h5>
-      <input id="gen-phone" type="number" class="form-control" ng-model="generalContact.query.phone">
-      <h5><label for="gen-email">Email</label></h5>
-      <input id="gen-email" type="email" class="form-control" ng-model="generalContact.query.email">
-      <h5><label for="gen-body">Message</label></h5>
-      <textarea id="gen-body" type="text" ng-model="generalContact.query.message" class="form-control"></textarea>
+    <div class="contact-loading" ng-show="generalContact.inProgress">
+      <loading-spinner type="absolute" ng-show="true"></loading-spinner>
     </div>
-    <button ng-click="generalContact.submit()" type="button" class="btn btn-danger">SUBMIT</button>
+    <div>
+      <h3 class="contact-message" ng-class="generalContact.hasError ? 'contact-error' : 'contact-success'">{{generalContact.message}}</h3>
+    </div>
+    <form name="generalContactForm" novalidate="">
+      <div class="form-group">
+        <h5><label for="pro-name">Name<span>*</span></label></h5>
+        <input id="pro-name" type="text" name="name" class="form-control" ng-model="generalContact.query.name" ng-disabled="generalContact.inProgress" required>
+        <p class="invalid-field" ng-show="generalContactForm.name.$error.required && generalContactForm.name.$touched">Please provide your name.</p>
+
+        <h5><label for="pro-phone">Phone</label></h5>
+        <input id="pro-phone" type="phone" name="phone" class="form-control" ng-model="generalContact.query.phone" ng-disabled="generalContact.inProgress">
+
+        <h5><label for="pro-email">Email<span>*</span></label></h5>
+        <input id="pro-email" type="email" name="email" class="form-control" ng-model="generalContact.query.email" ng-disabled="generalContact.inProgress" required>
+        <p class="invalid-field" ng-show="generalContactForm.email.$error.required && generalContactForm.email.$touched">Please provide a valid email address.</p>
+        
+        <h5><label for="pro-about">Message<span>*</span></label></h5>
+        <textarea id="pro-about" type="text" name="about" ng-model="generalContact.query.about" class="form-control" ng-disabled="generalContact.inProgress" required></textarea>
+        <p class="invalid-field" ng-show="generalContactForm.about.$error.required && generalContactForm.about.$touched">Please add a message.</p>
+      </div>
+      <button ng-click="generalContact.submit()" type="button" class="btn btn-danger" ng-disabled="!generalContactForm.$valid">SUBMIT</button>
+    </form>
   </div>
 </div>

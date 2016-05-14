@@ -28,3 +28,19 @@
   max-width: 100%;
   float: left;
 }
+
+.select-artist {
+  cursor: pointer;
+  h5 {
+    width: 100%;
+  }
+}
+
+.preview-image {
+  max-width: 50%;
+  margin: 15px 0;
+}
+
+.back-button {
+  margin: 10px 0;
+}

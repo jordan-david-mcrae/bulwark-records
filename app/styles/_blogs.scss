@@ -48,6 +48,42 @@
   }
 }
 
+.datestamp {
+  font-style: italic;
+}
+
+.submit-blog {
+  margin-top: 15px;
+}
+
+.admin-buttons {
+  button {
+    margin-left: 10px;
+  }
+}
+
+.pagination-sm {
+  li a {
+    background-color: $transparent;
+    color: $white-text;
+    border-color: $primary-color;
+  }
+  .disabled {
+    a {
+      background-color: $transparent;
+      color: $white-text;
+      border-color: $primary-color;
+    }
+  }
+  .active {
+    a, a:hover {
+      background-color: $primary-color;
+      color: $white-text;
+      border-color: $primary-color;
+    }
+  }
+}
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
   .new-blog-entry {
     .btn-group button {

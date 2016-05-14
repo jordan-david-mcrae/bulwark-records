@@ -1,11 +1,11 @@
 <div class="col-sm-12 artists-container">
   <div class="col-md-4 col-sm-12 artist-card" ng-repeat="artist in artists.artistList">
     <div class="thumbnail">
-      <img ng-src="{{artist.image}}" alt="..." spark-scroll-animate="bulwark.animateText">
+      <img ng-src="{{artist.image}}" alt="...">
       <div class="caption">
-        <h3 spark-scroll-animate="bulwark.animateText">{{artist.name}}</h3>
-        <p spark-scroll-animate="bulwark.animateText">{{artist.shortDes}}</p>
-        <p spark-scroll-animate="bulwark.animateText"><a class="btn btn-danger" role="button" ng-click="artists.viewArtist(artist.id)">View</a></p>
+        <h3>{{artist.name}}</h3>
+        <p>{{artist.shortDes}}</p>
+        <p><a class="btn btn-danger" role="button" ng-click="artists.viewArtist(artist.id)">View</a></p>
       </div>
     </div>
   </div>

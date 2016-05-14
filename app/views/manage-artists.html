@@ -1,0 +1,70 @@
+<h3>Manage Artists</h3>
+<div>
+	<h3 class="contact-message" ng-class="manageArtists.hasError ? 'contact-error' : 'contact-success'">{{manageArtists.message}}</h3>
+</div>
+
+<uib-tabset active="active" class="manage-artist-tab-wrapper">
+  <uib-tab index="0">
+	<loading-spinner type="absolute" ng-if="manageArtists.loading"></loading-spinner>
+	  <uib-tab-heading>
+	      <i class="glyphicon glyphicon-pencil"></i> Manage Artists
+	  </uib-tab-heading>
+	  <div class="artist-tab-body" ng-hide="manageArtists.loading || manageArtists.selectedArtist !== ''">
+		  <h4>Artist List</h4>
+		  <p>Click on an artist to view and edit their details.</p>
+		  <hr>
+		  <div ng-if="manageArtists.artists.length === 0">
+			  <p>There are currently no artists.</p>
+		  </div>
+
+		  <div ng-repeat="artist in manageArtists.artists" ng-click="manageArtists.setActiveArtist(artist)" class="select-artist col-xs-4">
+		  	<h5 class="btn btn-danger">{{artist.name}}</h5>
+		  </div>
+	  </div>
+
+	  <div class="artist-tab-body" ng-hide="manageArtists.loading || manageArtists.selectedArtist === ''">
+    <button class="btn btn-danger back-button" type="button" ng-disabled="!editArtistForm.$valid" ng-click="manageArtists.back()">Back To Artist List</button>
+	  <h3>Edit {{manageArtists.selectedArtist.name}}</h3>
+		  <form name="editArtistForm">
+	  		<h4>Artist Name</h4>
+				<input class="form-control" ng-model="manageArtists.selectedArtist.name" name="name" type="text" required>
+
+	  		<h4>Description</h4>
+				<div text-angular class="custom-blog" name="editDescription" ng-model="manageArtists.selectedArtist.description" required></div>
+
+	  		<h4>Image</h4>
+				<input class="form-control" ng-model="manageArtists.selectedArtist.image" name="image" type="text" required>
+	  		<div class="col-xs-12">
+		  		<img class="preview-image" ng-src="{{manageArtists.selectedArtist.image}}">
+	  		</div>
+		  </form>
+	    <button class="btn btn-danger" type="button" ng-disabled="!editArtistForm.$valid" ng-click="manageArtists.addArtist()">Save Changes</button>
+	    <button class="btn btn-danger" type="button" ng-disabled="!editArtistForm.$valid" ng-click="manageArtists.back()">Cancel</button>
+	  </div>
+  </uib-tab>
+  <uib-tab index="2">
+	<loading-spinner type="absolute" ng-if="manageArtists.loading"></loading-spinner>
+    <uib-tab-heading>
+      <i class="glyphicon glyphicon-plus"></i> Add an Artist
+    </uib-tab-heading>
+	  <div class="artist-tab-body" ng-hide="manageArtists.loading">
+		  <form name="newArtistForm">
+		  	<div class="form-group">
+		  		<h4>Artist Name</h4>
+					<input class="form-control" ng-model="manageArtists.newDetails.name" name="name" type="text" required>
+
+		  		<h4>Artist Description</h4>
+		      <div text-angular class="custom-blog" name="description" ng-model="manageArtists.newDetails.description" required></div>
+
+
+		      <h4>Artist Image</h4>
+					<input class="form-control" ng-model="manageArtists.newDetails.image" name="image" type="text" required>
+		  	</div>
+
+		  	<div class="col-xs-12">
+			    <button class="btn btn-danger" type="button" ng-disabled="!newArtistForm.$valid" ng-click="manageArtists.addArtist()">Create</button>
+		  	</div>
+		  </form>
+    </div>
+  </uib-tab>
+</uib-tabset>

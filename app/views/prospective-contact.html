@@ -1,19 +1,67 @@
-<div class="col-sm-12">
-  <h1 spark-scroll-animate="bulwark.animateText">Show Me Your Goodies</h1>
-  <h3 spark-scroll-animate="bulwark.animateText">Think you've got what it takes? We'll see what Javid has to say about that...</h3>
-  <p spark-scroll-animate="bulwark.animateText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad voluptatum aliquam, laborum harum tempore magni totam, quasi numquam doloremque tempora, fugiat libero eum expedita assumenda qui pariatur repellat. Nihil, nesciunt!Lorem ipsum Consectetur nostrud enim id nisi reprehenderit ex et laboris dolore adipisicing ut magna sunt aliqua occaecat dolor aliqua ad pariatur officia in deserunt reprehenderit est Ut ut cupidatat cillum minim minim dolor dolore officia adipisicing officia nulla consectetur cupidatat Duis exercitation velit dolor in ullamco ullamco dolor ut anim dolor anim dolor laborum tempor enim id ut sed ut eiusmod deserunt Ut dolor magna aliquip est aliquip fugiat cupidatat velit esse dolor non ut laboris ut mollit nostrud eiusmod consequat est fugiat exercitation voluptate sed elit dolore et in mollit labore ut laboris eiusmod ea do culpa proident esse nulla consectetur commodo aliqua in occaecat sed dolore nulla culpa sunt irure incididunt ex in esse laboris sint deserunt non qui sit est consectetur in veniam sunt enim Excepteur anim veniam commodo culpa labore sunt pariatur consequat elit labore est id ut ea sunt ullamco in do in commodo. Lorem ipsum Elit tempor pariatur eiusmod est fugiat do exercitation Excepteur consectetur ad ex exercitation aliquip sed deserunt sit reprehenderit aute velit laborum voluptate dolor velit sint. Lorem ipsum Duis veniam aliquip dolore dolore commodo eu elit elit cillum sint ex deserunt sunt sunt ut id sed Ut consequat proident est ea nulla ut aliqua Duis velit tempor reprehenderit Excepteur occaecat cillum nulla deserunt veniam in nostrud cupidatat exercitation ad exercitation voluptate cillum nostrud nostrud nulla labore aliquip voluptate officia adipisicing ex fugiat ex minim do aliqua et Excepteur reprehenderit dolore in anim irure laborum est sunt sint adipisicing laboris elit ut irure cillum est officia officia dolor ut esse irure incididunt dolor eiusmod veniam dolore ea in eiusmod velit in laboris dolore aliqua sed ea est culpa ut do mollit fugiat ea esse anim irure consectetur nisi adipisicing adipisicing dolor in nulla reprehenderit dolor sint Excepteur eiusmod tempor culpa adipisicing nulla ea Ut fugiat pariatur dolore nisi non sint enim exercitation consequat magna ea in Duis eiusmod mollit tempor Duis eu velit nostrud magna cillum Excepteur pariatur sed enim do Ut sunt reprehenderit ea sunt fugiat enim in aute non esse irure et ad qui cupidatat minim enim magna velit magna culpa veniam ex magna labore occaecat Excepteur qui magna aliquip laboris et cupidatat cillum do occaecat reprehenderit pariatur nisi incididunt adipisicing non Ut Duis amet sed cupidatat do nostrud enim ex voluptate in velit ad proident voluptate exercitation adipisicing sunt eiusmod aute anim cupidatat tempor mollit culpa dolor ut magna cillum cillum dolor deserunt fugiat laborum.</p>
-  <hr>
-  <div class="general-contact">
-    <div class="form-group">
-      <h5><label for="pro-name">Name</label></h5>
-      <input id="pro-name" type="text" class="form-control" ng-model="prospectiveContact.query.name">
-      <h5><label for="pro-phone">Phone</label></h5>
-      <input id="pro-phone" type="number" class="form-control" ng-model="prospectiveContact.query.phone">
-      <h5><label for="pro-email">Email</label></h5>
-      <input id="pro-email" type="email" class="form-control" ng-model="prospectiveContact.query.email">
-      <h5><label for="pro-about">About You / Media Links</label></h5>
-      <textarea id="pro-about" type="text" ng-model="prospectiveContact.query.about" class="form-control"></textarea>
-    </div>
-    <button ng-click="prospectiveContact.submit()" type="button" class="btn btn-danger">SUBMIT</button>
+<loading-spinner type="absolute" ng-if="label.updateTextLoading"></loading-spinner>
+
+<div>
+  <h3 class="contact-message" ng-class="label.hasError ? 'contact-error' : 'contact-success'">{{prospectiveContact.updateMessage}}</h3>
+</div>
+
+<div ng-if="bulwark.auth && !prospectiveContact.editOn && !prospectiveContact.updateTextLoading">
+  <button ng-click="prospectiveContact.edit()" type="button" class="btn btn-danger submit-blog">Edit</button>
+</div>
+
+<div class="col-sm-12" ngf-drop ng-model="prospectiveContact.files" ngf-multiple="true" ng-change="prospectiveContact.filesSelected()">
+  <div class="edit-info-wrapper" ng-if="bulwark.auth && prospectiveContact.editOn && !prospectiveContact.updateTextLoading">
+    <div text-angular class="custom-blog" ng-model="prospectiveContact.info.html"></div>
+    <button ng-click="prospectiveContact.save()" type="button" class="btn btn-danger submit-blog">Save</button>
+    <button ng-click="prospectiveContact.cancel()" type="button" class="btn btn-danger submit-blog">Cancel</button>
   </div>
+  <any ng-bind-html="prospectiveContact.info.html" ng-hide="prospectiveContact.editOn || prospectiveContact.updateTextLoading"></any>
+  <hr>
+  <div class="general-contact" ng-hide="prospectiveContact.editOn || prospectiveContact.updateTextLoading">
+    <div class="contact-loading" ng-show="prospectiveContact.inProgress">
+      <loading-spinner type="absolute" ng-show="true"></loading-spinner>
+    </div>
+    <div>
+      <h3 class="contact-message" ng-class="prospectiveContact.hasError ? 'contact-error' : 'contact-success'">{{prospectiveContact.message}}</h3>
+      <h3 class="contact-message">{{prospectiveContact.uploadMessage}}</h3>
+    </div>
+    <form name="prospectiveForm" novalidate>
+      <div class="form-group">
+        <h5><label for="pro-name">Name<span>*</span></label></h5>
+        <input id="pro-name" type="text" name="name" class="form-control" ng-model="prospectiveContact.query.name" ng-disabled="prospectiveContact.inProgress" required>
+        <p class="invalid-field" ng-show="prospectiveForm.name.$error.required && prospectiveForm.name.$dirty">Please provide your name.</p>
+
+        <h5><label for="pro-phone">Phone</label></h5>
+        <input id="pro-phone" type="phone" name="phone" class="form-control" ng-model="prospectiveContact.query.phone" ng-disabled="prospectiveContact.inProgress">
+
+        <h5><label for="pro-email">Email<span>*</span></label></h5>
+        <input id="pro-email" type="email" name="email" class="form-control" ng-model="prospectiveContact.query.email" ng-disabled="prospectiveContact.inProgress" required>
+        <p class="invalid-field" ng-show="prospectiveForm.email.$error.required && prospectiveForm.email.$touched">Please provide a valid email.</p>
+
+        <h5 class="file-upload-label"><label for="pro-about">File Upload</label></h5>
+        <p>Click upload button or drag files into this window to upload.</p>
+        <!-- <div class="btn btn-danger" ngf-select="prospectiveContact.uploadFiles($files)" ngf-multiple="true" accept="audio/*,video/*,image/*">Select</div> -->
+        
+         <div class="btn btn-danger" ngf-select ng-model="prospectiveContact.files" ngf-multiple="true" accept="audio/*,video/*,image/*" ngf-max-size="1MB" name="uploader" ng-change="prospectiveContact.filesSelected()">Select <i class="glyphicon glyphicon-upload"></i>
+         </div>
+         <div class="row file-list">
+          <div ng-repeat="name in prospectiveContact.fileNames">
+            <div class="col-xs-6 col-sm-4 file-button">
+              <button class="btn-danger" ng-click="prospectiveContact.removeFile(name)"><p>{{name}}</p><i class="glyphicon glyphicon-trash"></i></button>
+            </div>
+          </div>
+         </div>
+         <p class="invalid-field" ng-show="prospectiveForm.uploader.$invalid">Maximum file upload size is 5mb. Please upload a smaller file.</p>
+         <!-- <button ng-click="prospectiveContact.uploadFiles()">Upload Test...</button> -->
+
+
+        <!-- <button class="button" ngf-select="prospectiveContact.uploadFiles($files)" multiple="multiple">Upload</button> -->
+
+        <h5><label for="pro-about">About You / Media Links<span>*</span></label></h5>
+        <textarea id="pro-about" type="text" name="about" ng-model="prospectiveContact.query.about" class="form-control" ng-disabled="prospectiveContact.inProgress" required></textarea>
+        <p class="invalid-field" ng-show="prospectiveForm.about.$error.required && prospectiveForm.about.$touched">Please tell us about yourself.</p>
+      </div>
+      <button ng-click="prospectiveContact.submit(prospectiveForm)" type="button" class="btn btn-danger" ng-disabled="!prospectiveForm.$valid || !prospectiveContact.uploadComplete">SUBMIT</button>
+    </form>
+  </div>
+  <br>
 </div>

@@ -10,20 +10,25 @@
 angular.module('bulwarkApp')
   .controller('MainCtrl', function(blogService, $scope, screensize, $window) {
     var vm = this;
-    vm.blogs = blogService.getBlogs();
+    vm.blogs = [];
     vm.currentPageBlogs = [];
     vm.animateText = {};
     vm.loading = false;
     vm.currentPage = 1;
     vm.itemsPerPage = 5;
     vm.beginFrom = '';
+    vm.editId = '';
+    vm.edit = false;
+    vm.message = '';
+    vm.hasError = false;
 
     vm.init = function() {
       vm.loading = true;
       blogService.getBlogs()
-        .then(function success() {
+        .then(function success(response) {
           vm.loading = false;
-        }, function error() {
+          vm.blogs = response.blogs;
+        }, function err() {
           vm.loading = false;
         });
 
@@ -49,19 +54,33 @@ angular.module('bulwarkApp')
       }
     };
 
+    vm.editBlog = function (blog) {
+      vm.edit = true;
+      vm.message = '';
+      vm.editId = blog.blogID;
+      vm.hasError = false;
+    };
+
+    vm.save = function (blog) {
+      vm.loading = true;
+      blogService.sendBlog(blog)
+        .then(function success (response) {
+          vm.message = response.data.detail;
+          vm.loading = false;
+          vm.edit = false;
+        }, function err (response) {
+          vm.message = response.data.detail;
+          vm.loading = false;
+          vm.hasError = true;
+        });
+    };
+
     vm.pageChanged = function() {
-      $window.scrollTo(0, 0);
-
-      // var changePage = (vm.currentPage * vm.itemsPerPage) - vm.itemsPerPage;
-
+      $('body').duScrollTo(0, 0, 500);
+      // $window.scrollTo(0, 0, 500, 200);
       var changePage = (vm.currentPage * $scope.pageSize) - $scope.pageSize;
       vm.beginFrom = changePage;
     };
-
-    // socket.on('updateBlogs', function(blogs) {
-    //   vm.blogs = blogs;
-    // });
-
 
     $scope.$on('$routeChangeSuccess', function() {
       $window.scrollTo(0, 0);

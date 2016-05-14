@@ -1,0 +1,61 @@
+.spotify-dragger {
+	position: fixed;
+	left: 0;
+	top: 50%;
+	width: 1em;
+	height: 2em;
+	background-color: $primary-color;
+	font-size: 2em;
+	padding-top: 0.4em;
+	padding-left: 0;
+	border: none;
+	z-index: 1003;
+}
+
+.spotify-closer {
+	@extend .spotify-dragger;
+	display: inline-block;
+	position: fixed;
+	top: initial;
+	top: 55%;
+	left: 226px;
+	transform: scale(-1, 1);
+}
+
+.slideout-menu {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  width: 256px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: none;
+  height: auto;
+  border-right: 1px solid $primary-color;
+  background-color: $spotify-background;
+  box-shadow: inset -10px -10px 75px -1px rgba(0,0,0,0.75);
+}
+
+.slideout-panel {
+  position:relative;
+  z-index: 1;
+  will-change: transform;
+  z-index: 1002;
+  background-image: url('/images/concrete-seamless.png');;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+  overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+  display: block;
+}
+
+#menu {
+  width: 250px;
+}
